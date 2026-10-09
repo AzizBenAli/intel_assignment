@@ -1,0 +1,33 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Build artifacts
+build/
+dist/
+
+# Downloaded model weights and large model exports
+models/resnet50/
+models/mobilenetv3_small/
+models/tinyllama/
+models/tinyllama*/
+models/*/openvino_model.bin
+models/*/model.safetensors
+
+# Generated SVG visualizations
+output/*.svg
+
+# Editor and operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
