@@ -363,7 +363,7 @@ TinyLlama is a compact language model that can be used to demonstrate visualizat
 python -m model_graph.cli path\to\tinyllama.xml --output output\tinyllama.svg
 ```
 
-The ResNet-50 and TinyLlama model files are not included in this repository. Large model files should be stored separately rather than committed to version control. Ensure that the XML file references its corresponding BIN weights file and that the model is compatible with the installed OpenVINO version.
+The ResNet-50 and TinyLlama model files are not included in this repository. Ensure that the XML file references its corresponding BIN weights file and that the model is compatible with the installed OpenVINO version.
 
 ## Limitations
 
