@@ -13,10 +13,14 @@ The following comparison shows the model graph before and after applying the tra
   </tr>
   <tr>
     <td align="center" width="50%">
-      <img src="docs/images/model_before.svg" alt="Original model graph before transformations" width="100%">
+      <img src="docs/images/model_before.svg"
+           alt="Original model graph"
+           width="450">
     </td>
     <td align="center" width="50%">
-      <img src="docs/images/model_after.svg" alt="Model graph after highlighting and Constant hiding" width="100%">
+      <img src="docs/images/model_after.svg"
+           alt="Transformed model graph"
+           width="450">
     </td>
   </tr>
   <tr>
@@ -24,6 +28,7 @@ The following comparison shows the model graph before and after applying the tra
     <td align="center">Transformed graph with Constant nodes hidden and the selected node highlighted.</td>
   </tr>
 </table>
+
 
 ### Transformation Pipeline
 
