@@ -20,7 +20,7 @@ The following comparison shows the model graph before and after applying the tra
     <td align="center" width="50%">
       <img src="docs/images/model_after.svg"
            alt="Transformed model graph"
-           width="450">
+           width="350">
     </td>
   </tr>
   <tr>
