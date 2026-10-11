@@ -2,6 +2,29 @@
 
 A Python tool for parsing OpenVINO Intermediate Representation (IR) models, converting them into a framework-independent graph representation, applying configurable transformation passes, and rendering the graph as an SVG image.
 
+## Visual Preview
+
+Model Graph Visualizer converts OpenVINO IR models into directed graphs and exports them as SVG files.
+
+### Generated Model Graph
+
+The following graph is generated from the included tiny test model.
+
+![Generated OpenVINO model graph](docs/images/tiny_test_model.svg)
+
+### How It Works
+
+```mermaid
+flowchart TD
+    A["OpenVINO IR Model<br/>XML + BIN"] --> B["OpenVINO Parser"]
+    B --> C["Framework-Independent Graph"]
+    C --> D["Transformation Pipeline"]
+    D --> E["SVG Renderer"]
+    E --> F["Output SVG Graph"]
+```
+
+The pipeline separates parsing, graph transformations, and rendering, making each stage easier to test and extend.
+
 ## Features
 
 - Parse OpenVINO IR models from XML and BIN files.
@@ -19,10 +42,17 @@ A Python tool for parsing OpenVINO Intermediate Representation (IR) models, conv
 
 - Python 3.11 or newer
 - OpenVINO
-- Graphviz and its Python package
+- Graphviz system application and its Python package
 - Pytest for running tests
 
 ## Installation
+
+Clone the repository and navigate to the project directory:
+
+```powershell
+git clone https://github.com/AzizBenAli/intel_assignment.git
+cd intel_assignment
+```
 
 Install the project and development dependencies:
 
@@ -59,7 +89,7 @@ A small test model is provided in the `models` directory:
 - `models/tiny_test_model.xml`
 - `models/tiny_test_model.bin`
 
-Generate an SVG:
+Generate an SVG graph:
 
 ```powershell
 python -m model_graph.cli models\tiny_test_model.xml --output output\tiny_test_model.svg
@@ -71,7 +101,14 @@ Highlight the node named `add`:
 python -m model_graph.cli models\tiny_test_model.xml --output output\highlighted_graph.svg --highlight add
 ```
 
-Open the resulting SVG in a web browser.
+To generate the SVG used in the README preview, run:
+
+```powershell
+New-Item -ItemType Directory -Force docs\images
+python -m model_graph.cli models\tiny_test_model.xml --output docs\images\tiny_test_model.svg
+```
+
+Open the generated SVG in a web browser to inspect it.
 
 ## Command-Line Usage
 
@@ -139,11 +176,11 @@ If no `--pass` options are specified, both passes run by default in this order:
 1. Node highlighting
 2. Constant hiding
 
-When `--no-passes` is specified, all passes are disabled.
+When `--no-passes` is specified, all transformation passes are disabled.
 
 ## Python API
 
-The main components can be used directly from Python:
+The main components can also be used directly from Python:
 
 ```python
 from pathlib import Path
@@ -217,7 +254,7 @@ Highlighting is stored in visualization metadata, allowing the renderer to apply
 
 The metadata includes the consumer input port, tensor data type, and tensor shape when available. Shared constants can also be identified by their unique node IDs.
 
-Tensor values are not included in the visualization metadata. Constant nodes are removed only when they have no remaining graph connections.
+Tensor values are not included in the visualization metadata. Constant nodes are removed only when the transformation can preserve the relevant graph information.
 
 ### Pass Pipeline
 
@@ -231,6 +268,9 @@ The parser creates the internal graph separately from the original OpenVINO mode
 intel_assignment/
 ├── benchmarks/
 │   └── benchmark_graph.py
+├── docs/
+│   └── images/
+│       └── tiny_test_model.svg
 ├── examples/
 │   └── test_highlighting.py
 ├── models/

@@ -1,4 +1,4 @@
-[build-system]
+﻿[build-system]
 requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
@@ -7,7 +7,10 @@ name = "intel_assignment"
 version = "0.1.0"
 description = "Framework-independent model graph visualization pipeline"
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "openvino>=2026.0",
+    "graphviz>=0.20",
+]
 
 [project.optional-dependencies]
 dev = [
