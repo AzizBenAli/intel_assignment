@@ -4,26 +4,39 @@ A Python tool for parsing OpenVINO Intermediate Representation (IR) models, conv
 
 ## Visual Preview
 
-Model Graph Visualizer converts OpenVINO IR models into directed graphs and exports them as SVG files.
+The following comparison shows the model graph before and after applying the transformation pipeline.
 
-### Generated Model Graph
+<table>
+  <tr>
+    <th align="center">Before Transformation</th>
+    <th align="center">After Transformation</th>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <img src="docs/images/model_before.svg" alt="Original model graph before transformations" width="100%">
+    </td>
+    <td align="center" width="50%">
+      <img src="docs/images/model_after.svg" alt="Model graph after highlighting and Constant hiding" width="100%">
+    </td>
+  </tr>
+  <tr>
+    <td align="center">Original graph with all nodes visible.</td>
+    <td align="center">Transformed graph with Constant nodes hidden and the selected node highlighted.</td>
+  </tr>
+</table>
 
-The following graph is generated from the included tiny test model.
-
-![Generated OpenVINO model graph](docs/images/tiny_test_model.svg)
-
-### How It Works
+### Transformation Pipeline
 
 ```mermaid
 flowchart TD
-    A["OpenVINO IR Model<br/>XML + BIN"] --> B["OpenVINO Parser"]
-    B --> C["Framework-Independent Graph"]
-    C --> D["Transformation Pipeline"]
-    D --> E["SVG Renderer"]
-    E --> F["Output SVG Graph"]
+    A["OpenVINO IR Model"] --> B["Parse Model"]
+    B --> C["Build Internal Graph"]
+    C --> D["Apply Transformations"]
+    D --> E["Render SVG"]
+    E --> F["Visualize Result"]
 ```
 
-The pipeline separates parsing, graph transformations, and rendering, making each stage easier to test and extend.
+The pipeline separates parsing, graph transformations, and rendering. This makes the graph easier to inspect and allows transformation passes to be configured independently.
 
 ## Features
 
