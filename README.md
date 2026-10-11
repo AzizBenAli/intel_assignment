@@ -25,7 +25,7 @@ The following comparison shows the model graph before and after applying the tra
   </tr>
   <tr>
     <td align="center">Original graph with all nodes visible.</td>
-    <td align="center">Transformed graph with Constant nodes hidden and the selected node highlighted.</td>
+    <td align="center">Transformed graph with Constant nodes hidden and the add node highlighted.</td>
   </tr>
 </table>
 
