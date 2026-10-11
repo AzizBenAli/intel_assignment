@@ -371,7 +371,3 @@ The ResNet-50 and TinyLlama model files are not included in this repository. Ens
 - Large graphs can produce very large SVG files that are difficult to inspect in a browser.
 - Visualization performance depends on graph size, layout complexity, and the installed Graphviz version.
 - The tool visualizes model structure; it does not perform model inference or measure prediction accuracy.
-
-## License
-
-Add the license required by your assignment or repository before distributing this project.
